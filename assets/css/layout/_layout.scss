@@ -1,0 +1,89 @@
+.main-conteiner{
+    width: 80%;
+    aspect-ratio: 210 / 297;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 0;
+    background-color: #FFF;
+    margin-top: 20px;
+}
+
+// separador
+.separator{
+    width: 100%;
+    height: 2px;
+    background-color: black;
+    opacity: .1;
+    margin: 10px 0;
+}
+
+.sidebar{
+    padding: 30px 20px;
+    background-color: #F6F6F6;
+
+    // Foto de perfil
+    & .photo{
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        border-radius: 50%;
+        overflow: hidden;
+        position: relative;
+
+        & img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    // Nombre
+    & .name{
+        text-align: center;
+        margin-top: 10px;
+        font-size: 1.5em;
+
+        & span{
+            display: block;
+            font-size: .625em;
+        }
+    }
+
+    // Bloques de datos
+    .sidebar-block{
+        & ul{
+            & p{
+                font-size: .9em;
+                font-weight: bold;
+                color: #221e3d;
+            }
+
+            & li{
+                font-size: .7em;
+                font-weight: bold;
+                color: #221e3d;
+                opacity: .8;
+            }
+        }
+    }
+}
+
+.main-content{
+    padding: 30px 20px;
+
+    &-block{
+        & ul{
+            & p{
+                font-size: .9em;
+                font-weight: bold;
+                color: #221e3d;
+            }
+
+            & li{
+                font-size: .7em;
+                color: #221e3d;
+                margin-bottom: 10px;
+            }
+        }
+    }
+}

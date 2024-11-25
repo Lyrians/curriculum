@@ -1,0 +1,134 @@
+@charset "UTF-8";
+.main-conteiner {
+  width: 80%;
+  aspect-ratio: 210/297;
+  margin: 20px auto;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 0 2fr;
+  grid-template-columns: 1fr 2fr;
+  gap: 0;
+  background-color: #FFF;
+  margin-top: 20px;
+}
+
+.separator {
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  opacity: 0.1;
+  margin: 10px 0;
+}
+
+.sidebar {
+  padding: 30px 20px;
+  background-color: #F6F6F6;
+}
+.sidebar .photo {
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+}
+.sidebar .photo img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.sidebar .name {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 1.5em;
+}
+.sidebar .name span {
+  display: block;
+  font-size: 0.625em;
+}
+.sidebar .sidebar-block ul p {
+  font-size: 0.9em;
+  font-weight: bold;
+  color: #221e3d;
+}
+.sidebar .sidebar-block ul li {
+  font-size: 0.7em;
+  font-weight: bold;
+  color: #221e3d;
+  opacity: 0.8;
+}
+
+.main-content {
+  padding: 30px 20px;
+}
+.main-content-block ul p {
+  font-size: 0.9em;
+  font-weight: bold;
+  color: #221e3d;
+}
+.main-content-block ul li {
+  font-size: 0.7em;
+  color: #221e3d;
+  margin-bottom: 10px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  background: #181728;
+  font-family: "Parkinsans", sans-serif;
+}
+
+ul {
+  list-style-type: none;
+}
+
+/*MEDIA QUERIES*/
+@media (max-width: 768px) {
+  body {
+    padding-top: 0 !important;
+  }
+  .copy {
+    display: none;
+  }
+  .sidebar {
+    padding: 10px;
+  }
+  .sidebar .main-photo {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .sidebar .main-photo .photo {
+    width: 50px;
+  }
+  .sidebar .main-photo .name {
+    font-size: 1em;
+    margin-top: 0;
+    margin-left: 10px;
+  }
+  .main-conteiner {
+    width: 100%;
+    aspect-ratio: unset;
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr; /* Una sola columna */
+    -ms-grid-rows: auto;
+    grid-template-rows: auto; /* Ajusta las filas automáticamente */
+  }
+  .main-conteiner > *:nth-child(1) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+  }
+}

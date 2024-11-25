@@ -1,0 +1,51 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body{
+    background: #181728;
+    font-family: "Parkinsans", sans-serif;
+}
+
+ul{
+    list-style-type: none;
+}
+
+/*MEDIA QUERIES*/
+@media (max-width: 768px) {
+    body{
+        padding-top: 0 !important;
+    }
+
+    .copy{
+        display: none;
+    }
+
+    .sidebar{
+        padding: 10px;
+        & .main-photo{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            & .photo{
+                width: 50px;
+            }
+
+            & .name{
+                font-size: 1em;
+                margin-top: 0;
+                margin-left: 10px;
+            }
+        }
+    }
+
+    .main-conteiner {
+        width: 100%;
+        aspect-ratio: unset;
+        grid-template-columns: 1fr; /* Una sola columna */
+        grid-template-rows: auto; /* Ajusta las filas automáticamente */
+    }
+}
