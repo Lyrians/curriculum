@@ -14,17 +14,25 @@
     <link rel="stylesheet" href="assets/css/estilos.css">
 </head>
 <body style="paddin-top: 20px;">
+    <div id="loading" style="width: 100%; height: 100vh; background: white; position: fixed; top: 0; left: 0; z-index: 999999999; display: flex; align-items: center; justify-content: center;">
+        
+<div class="loadingio-spinner-ripple-nq4q5u6dq7r"><div class="ldio-x2uulkbinbj">
+    <div></div><div></div>
+    </div></div>
+    </div>
 
-    <p class="copy" style="color: #FFF; opacity: .56; font-size: .7em;">
-        Diseñado y publicado por Axel Claudio Benitez Brizueño
+    <p>
+        Diseñado por Axel Claudio Benitez Brizueño
+
+        <a href="#" id="descargarcv">Descargar CV en PDF</a>
     </p>
 
-    <main class="main-conteiner">
+    <main class="main-conteiner" id="curriculum">
         <aside class="sidebar">
             <div class="main-photo">
-                <div class="photo">
+                <!-- <div class="photo">
                     <img src="https://picsum.photos/200/200" alt="">
-                </div>
+                </div> -->
     
                 <h3 class="name">
                     AXEL BENITEZ
@@ -43,9 +51,10 @@
                     <li>APELLIDO(S): BENITEZ BRIZUEÑO</li>
                     <li>FECHA DE NACIMIENTO: 11/03/1998</li>
                     <li>D.N.I: 40.288.787</li>
-                    <li>CELULAR: **********</li>
-                    <li>EMAIL: AXELBENITEZ688@GMAIL.COM</li>
-                    <li>LICENCIA: VIGENTE</li>
+                    <li>CELULAR: <a href="https://wa.me/542213140216">2213140216</a></li>
+                    <li>EMAIL: <a href="mailto:axelbenitez688@gmail.com?subject=CURRICULUM%20ONLINE&body=Vi%20tu%20curriculum%20online,%20me%20gustar%C3%ADa%20hacerte%20una%20consulta
+                        ">AXELBENITEZ688@GMAIL.COM</a></li>
+                    <li>LICENCIA: VIGENTE (AUTO Y CAMIONETA)</li>
                 </ul>
             </div>
 
@@ -55,9 +64,9 @@
                 <ul>
                     <p>REDES SOCIALES</p>
 
-                    <li>INSTAGRAM:</li>
-                    <li>GITHUB:</li>
-                    <li>CV ONLINE:</li>
+                    <li>INSTAGRAM: <a href="https://www.instagram.com/axel_benitez98/">@axel_benitez98</a></li>
+                    <li>GITHUB: <a href="https://github.com/Lyrians">https://github.com/Lyrians</a></li>
+                    <li>CV ONLINE: <a href="https://lyrians.github.io/curriculum/">https://lyrians.github.io/curriculum/</a> </li>
                 </ul>
             </div>
 
@@ -123,13 +132,14 @@
 
                     <li>
                         <b>PRIMARIA</b> | ESCUELA NRO 93 | FINALIZADO <br>
-                        <b>SECUNDARIA</b> | ESCUELA NRO 67 (AHORA 25) → ESCUELA NRO 25 | "FINES" ARTURO SEGUI (CERRADO)
+                        <b>SECUNDARIA</b> | ESCUELA NRO 57 (AHORA 67) → ESCUELA NRO 25 | "FINES" ARTURO SEGUI (CERRADO)
                     </li>
 
                     <p>CURSOS</p>
                     
                     <li>
                         CURSO PHP | UDEMY | PROF. CARLOS ARTURO (FALCONMASTER) <br>
+                        CURSO CSS/HTML/JS/JQUERY EDTEAM <br>
                         CURSO FOTOGRAFIA (SUPRAPIXEL) <br>
                         CURSO PROGRAMACIÓN PRINCIPIANTE EN PYTHON (EN CURSO)
                     </li>
@@ -152,18 +162,87 @@
         </section>
     </main>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+
     <script>
-        const mainContainer = document.querySelector('.main-conteiner');
-        const overlayElement = document.querySelector('.copy');
+        $(window).on('load', function(){
+            $("#loading").fadeOut(500, function(){
+                $(this).remove();
+            });
+        });
 
-        // Obtén la posición de .main-container
-        const rect = mainContainer.getBoundingClientRect();
+        $("#descargarcv").on("click", function(e){
+            e.preventDefault();
 
-        // Coloca el overlay en la posición calculada
-        overlayElement.style.position = 'absolute';
-        overlayElement.style.top = `${rect.top}px`; // Distancia desde la parte superior del viewport
-        document.body.style.paddingTop = `${rect.top}px`
-        overlayElement.style.left = `${rect.left}px`; // Distancia desde la parte izquierda del viewport
+            const conteiner = $(".main-conteiner");
+            const loading = $("<div class=loading><p>Creando el archivo...</p></div>");
+            $("body").prepend(loading);
+
+            $(".loading").css({
+                "width": "100%",
+                "height": "100vh",
+                "background": "white",
+                "position": "fixed",
+                "top": 0,
+                "left": 0,
+                "z-index": 99999999,
+                "display": "flex",
+                "justify-content": "center",
+                "align-items": "center"
+            });
+
+            $(".loading p").css({
+                "font-size": "2em",
+                "margin-top": "100px",
+                "opacity": 0
+            }).animate({
+                "margin-top": 0,
+                "opacity": 1
+            }, 500, "swing", function(){
+                conteiner.css({
+                    "width": "100%",
+                    "aspect-ratio": "unset"
+                });
+
+                $(".main-conteiner .sidebar").css({
+                    "height": "296.5mm"
+                });
+
+                var options = {
+                    margin:       [0, 0, 0, 0],  // Márgenes más pequeños (top, left, bottom, right)
+                    filename:     'curriculum.pdf',
+                    image:        { type: 'jpeg', quality: 0.98 },
+                    html2canvas:  { scale: 2, useCORS: true },  // Escala de la imagen
+                    jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }  // Asegura que el tamaño es A4
+                };
+
+                html2pdf()
+                    .from(document.getElementById("curriculum"))
+                    .set(options)
+                    .toPdf()
+                    .get('pdf')
+                    .then(() => {
+                        $(".loading p").text("¡VAMOS! ❤");
+                        return new Promise(resolve => setTimeout(resolve, 1000));
+                    })
+                    .save()
+                    .then(() => {
+                        conteiner.css({
+                            "width": "80%",
+                            "aspect-ratio": "210 / 297"
+                        });
+
+                        $(".main-conteiner .sidebar").css({
+                            "height": "auto"
+                        });
+
+                        $(".loading").fadeOut(500, "swing", function(e){
+                            $(this).remove();
+                        });
+                    });
+            });
+        });
     </script>
     
 </body>

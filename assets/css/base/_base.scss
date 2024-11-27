@@ -7,6 +7,24 @@
 body{
     background: #181728;
     font-family: "Parkinsans", sans-serif;
+
+    & > p{
+        width: 80%;
+        color: #FFF;
+        opacity: .56;
+        font-size: .7em;
+        margin: 20px auto 5px;
+        display: flex;
+        font-weight: bold;
+
+        & a{
+            margin-left: auto;
+        }
+    }
+}
+
+a{
+    color: rgb(255, 115, 139);
 }
 
 ul{
@@ -17,10 +35,10 @@ ul{
 @media (max-width: 768px) {
     body{
         padding-top: 0 !important;
-    }
 
-    .copy{
-        display: none;
+        & > p{
+            display: none;
+        }
     }
 
     .sidebar{

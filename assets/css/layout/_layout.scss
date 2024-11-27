@@ -1,12 +1,13 @@
 .main-conteiner{
     width: 80%;
     aspect-ratio: 210 / 297;
-    margin: 20px auto;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 0;
     background-color: #FFF;
-    margin-top: 20px;
+    border-radius: 5px;
+    overflow: hidden;
 }
 
 // separador
